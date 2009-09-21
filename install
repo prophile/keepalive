@@ -14,6 +14,7 @@ $contents = str_replace(array('$PATH', '$HASH'), array($argv[1], $subhash), $con
 $newpath = getenv('HOME') . "/Library/LaunchAgents/com.hovercatsw.alastair.keepalive.$subhash.plist";
 file_put_contents($newpath, $contents);
 system("launchctl load $newpath");
-system("sudo cp keepalive /usr/local/bin/keepalive");
+if (!file_exists("/usr/local/bin/keepalive"))
+	system("sudo cp keepalive /usr/local/bin/keepalive");
 
 ?>
