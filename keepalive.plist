@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.hovercatsw.alastair.keepalive.$HASH</string>
+	<key>OnDemand</key>
+	<true/>
+	<key>Program</key>
+	<string>/usr/local/bin/keepalive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>$PATH</string>
+	</array>
+	<key>WatchPaths</key>
+	<array>
+		<string>$PATH</string>
+	</array>
+</dict>
+</plist>

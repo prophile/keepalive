@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+if (!isset($argv[1]))
+{
+	printf("Usage: %s [disk]\n", $argv[0]);
+	exit(0);
+}
+
+$hash = sha1($argv[1]);
+$subhash = substr($hash, 0, 7);
+$contents = file_get_contents("keepalive.plist");
+$contents = str_replace(array('$PATH', '$HASH'), array($argv[1], $subhash), $contents);
+$newpath = getenv('HOME') . "/Library/LaunchAgents/com.hovercatsw.alastair.keepalive.$subhash.plist";
+file_put_contents($newpath, $contents);
+system("launchctl load $newpath");
+system("sudo cp keepalive /usr/local/bin/keepalive");
+
+?>
