@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+if (!isset($argv[1]))
+{
+	printf("Usage: %s [disk]\n", $argv[0]);
+	exit(0);
+}
+
+$hash = sha1($argv[1]);
+$subhash = substr($hash, 0, 7);
+$newpath = getenv('HOME') . "/Library/LaunchAgents/com.hovercatsw.alastair.keepalive.$subhash.plist";
+system("launchctl unload $newpath");
+
+?>
